@@ -5,18 +5,25 @@ public class Week2Stones {
         int placeHolder = 0;
         int dummy = 0;
 
-        for (int i = 0; i < A.length; i++) {
-            if (placeHolder < w) {
-                dummy++;
-                placeHolder += A[i];
+        for (int i : A) {
+            if(i>w) {
+                return 0;
+            }
 
-                if(placeHolder + A[i] > w) {
-                    continue;
-                }
-            } else if (placeHolder == w) {
+            if(placeHolder+i>w) {
+                dummy++;
+                continue;
+            }
+            if (placeHolder < w && !(placeHolder+i>w)) {
+                dummy++;
+                placeHolder += i;
+            }
+            if (placeHolder == w) {
+                dummy--;
                 break;
             }
         }
+
         return dummy;
     }
 

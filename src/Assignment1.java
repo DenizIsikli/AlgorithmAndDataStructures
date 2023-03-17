@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Assigment1 {
+public class Assignment1 {
     public static void priceHunter(int[] A) {
         Arrays.sort(A);
         int discount = 0;

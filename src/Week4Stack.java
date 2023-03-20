@@ -1,29 +1,53 @@
-import java.sql.Array;
 import java.util.*;
 
-public class Week4Stack {
-    public static void Stack(LinkedList<String> A) {
-        int temp = 0;
+class StackNode {
+    int value;
+    StackNode next;
 
-        for(String str : A) {
-            if (A.contains("O")) {
-                temp++;
-                System.out.println(temp);
-            }
-        }
+    StackNode(int value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class Stack {
+    private StackNode head;
+
+    Stack() {
+        this.head = null;
     }
 
+    void push(int value) {
+        StackNode newNode = new StackNode(value);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    int pop() {
+        if (head == null) {
+            throw new RuntimeException("Stack is empty");
+        }
+        int value = head.value;
+        head = head.next;
+        return value;
+    }
+}
+
+public class Week4Stack {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         int n = scanner.nextInt();
-        LinkedList<String> A = new LinkedList<>();
+        Stack stack = new Stack();
 
-        for (int i = 0; i < n+1; i++) {
-            String Num_A = scanner.nextLine();
-            A.add(Num_A);
+        for(int i = 0; i < n; i++) {
+            String operation = scanner.next();
+            if (operation.equals("PU")) {
+                int value = scanner.nextInt();
+                stack.push(value);
+            } else if (operation.equals("PO")) {
+                int value = stack.pop();
+                System.out.println(value);
+            }
         }
-
-        Stack(A);
     }
 }

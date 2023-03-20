@@ -24,6 +24,7 @@ public class Assignment2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        // read input
         int n = scanner.nextInt();
         int m = scanner.nextInt();
         int a = scanner.nextInt();

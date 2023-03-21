@@ -17,11 +17,11 @@ public class Assignment2 {
                 }
             }
         }
-
         return false;
     }
 
     public static void main(String[] args) {
+        // Basically same setup as week 6 exercise regarding vertices and edges
         Scanner scanner = new Scanner(System.in);
 
         // Input
@@ -41,7 +41,7 @@ public class Assignment2 {
             int u = scanner.nextInt();
             int v = scanner.nextInt();
 
-            //undirected, going both ways
+            // Undirected, going both ways
             adList[u].add(v);
             adList[v].add(u);
         }

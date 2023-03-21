@@ -18,27 +18,30 @@ public class Assignment2 {
             }
         }
 
-        return false; // no path found from start to end
+        return false;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // read input
+        // Input
         int n = scanner.nextInt();
         int m = scanner.nextInt();
         int a = scanner.nextInt();
         int b = scanner.nextInt();
 
-        // Adjacency list
+        // Adjacency list for vertices
         ArrayList<Integer>[] adList = new ArrayList[n+1];
         for(int i = 1; i <= n; i++) {
             adList[i] = new ArrayList<Integer>();
         }
 
+        // Edges
         for(int i = 0; i < m; i++) {
             int u = scanner.nextInt();
             int v = scanner.nextInt();
+
+            //undirected, going both ways
             adList[u].add(v);
             adList[v].add(u);
         }

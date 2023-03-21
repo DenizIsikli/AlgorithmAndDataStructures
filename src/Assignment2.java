@@ -2,21 +2,25 @@ import java.util.*;
 
 public class Assignment2 {
 
-    public static boolean dfs(ArrayList<Integer>[] adList, int curr, int target, boolean[] visited) {
-        // Base case
-        if(curr == target) {
-            return true;
-        }
+    public static boolean dfs(ArrayList<Integer>[] adList, int start, int target, boolean[] visited) {
+        Stack stack = new Stack();
+        stack.push(start);
 
-        visited[curr] = true;
+        while (!stack.isEmpty()) {
+            int curr = stack.pop();
+            visited[curr] = true;
 
-        for (int neighbor : adList[curr]) {
-            if (!visited[neighbor]) {
-                if (dfs(adList, target, neighbor, visited)) {
-                    return true;
+            if (curr == target) {
+                return true;
+            }
+
+            for (int neighbor : adList[curr]) {
+                if (!visited[neighbor]) {
+                    stack.push(neighbor);
                 }
             }
         }
+
         return false;
     }
 
@@ -41,7 +45,7 @@ public class Assignment2 {
             int u = scanner.nextInt();
             int v = scanner.nextInt();
 
-            // Undirected, going both ways
+            // Undirected edge, going both ways
             adList[u].add(v);
             adList[v].add(u);
         }

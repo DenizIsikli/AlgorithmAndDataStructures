@@ -49,9 +49,9 @@ public class Assignment2 {
         // use DFS to search for a path from a to b
         boolean[] visited = new boolean[n+1];
         if(dfs(adList, a, b, visited)) {
-            System.out.println("yes");
+            System.out.println("YES");
         } else {
-            System.out.println("no");
+            System.out.println("NO");
         }
     }
 }

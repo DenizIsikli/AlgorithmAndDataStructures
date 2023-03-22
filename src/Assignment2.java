@@ -3,7 +3,7 @@ import java.util.*;
 public class Assignment2 {
 
     public static boolean dfs(ArrayList<Integer>[] adList, int start, int target, boolean[] visited) {
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<>();
         stack.push(start);
 
         while (!stack.isEmpty()) {

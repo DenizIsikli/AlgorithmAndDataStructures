@@ -2,21 +2,21 @@ import java.util.*;
 
 public class Assignment2 {
 
-    public static boolean dfs(ArrayList<Integer>[] adList, int start, int target, boolean[] visited) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(start);
+    public static boolean bfs(ArrayList<Integer>[] paths, boolean[] visited, int start, int target) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
+        visited[start] = true;
 
-        while (!stack.isEmpty()) {
-            int curr = stack.pop();
-            visited[curr] = true;
-
+        while (!queue.isEmpty()) {
+            int curr = queue.poll();
             if (curr == target) {
                 return true;
             }
 
-            for (int neighbor : adList[curr]) {
-                if (!visited[neighbor]) {
-                    stack.push(neighbor);
+            for (int next : paths[curr]) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    queue.add(next);
                 }
             }
         }
@@ -25,34 +25,33 @@ public class Assignment2 {
     }
 
     public static void main(String[] args) {
-        // Basically same setup as week 6 exercise regarding vertices and edges
+        //basically same setup as week 6 exercise regarding vertices and edges
         Scanner scanner = new Scanner(System.in);
 
-        // Input
+        //input
         int n = scanner.nextInt();
         int m = scanner.nextInt();
         int a = scanner.nextInt();
         int b = scanner.nextInt();
 
-        // Adjacency list for vertices
-        ArrayList<Integer>[] adList = new ArrayList[n+1];
-        for(int i = 1; i <= n; i++) {
-            adList[i] = new ArrayList<Integer>();
+        //list for vertices
+        ArrayList<Integer>[] paths = new ArrayList[n+1];
+        for (int i = 1; i <= n; i++) {
+            paths[i] = new ArrayList<Integer>();
         }
 
-        // Edges
-        for(int i = 0; i < m; i++) {
+        //edges
+        for (int i = 1; i <= m; i++) {
             int u = scanner.nextInt();
             int v = scanner.nextInt();
-
-            // Undirected edge, going both ways
-            adList[u].add(v);
-            adList[v].add(u);
+            paths[u].add(v);
+            paths[v].add(u);
         }
 
-        // use DFS to search for a path from a to b
+
+        //use BFS to search for a path from a to b
         boolean[] visited = new boolean[n+1];
-        if(dfs(adList, a, b, visited)) {
+        if(bfs(paths, visited, a, b)) {
             System.out.println("YES");
         } else {
             System.out.println("NO");

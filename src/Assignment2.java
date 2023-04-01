@@ -20,7 +20,6 @@ public class Assignment2 {
                 }
             }
         }
-
         return false;
     }
 

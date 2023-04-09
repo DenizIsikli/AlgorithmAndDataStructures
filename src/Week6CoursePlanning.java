@@ -2,6 +2,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Week6CoursePlanning {
+    private static int findDepth(int u, ArrayList<Integer>[] graph, int[] depth) {
+        if (depth[u] != 0) {
+            return depth[u];
+        }
+        int maxDepth = 1;
+        for (int v : graph[u]) {
+            maxDepth = Math.max(maxDepth, findDepth(v, graph, depth) + 1);
+        }
+        depth[u] = maxDepth;
+        return maxDepth;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -32,18 +44,6 @@ public class Week6CoursePlanning {
             result = Math.max(result, depth[i]);
         }
         System.out.println(result);
-    }
-
-    private static int findDepth(int u, ArrayList<Integer>[] graph, int[] depth) {
-        if (depth[u] != 0) {
-            return depth[u];
-        }
-        int maxDepth = 1;
-        for (int v : graph[u]) {
-            maxDepth = Math.max(maxDepth, findDepth(v, graph, depth) + 1);
-        }
-        depth[u] = maxDepth;
-        return maxDepth;
     }
 }
 

@@ -23,13 +23,11 @@ public class Week8FastUnion {
         int rootX = find(x);
         int rootY = find(y);
         if (rootX != rootY) {
-            if (rank[rootX] < rank[rootY]) {
-                parent[rootX] = rootY;
-            } else {
-                parent[rootY] = rootX;
-                if (rank[rootX] == rank[rootY]) {
-                    rank[rootX]++;
-                }
+            parent[rootX] = rootY;
+        } else {
+            parent[rootY] = rootX;
+            if (rank[rootX] == rank[rootY]) {
+                rank[rootX]++;
             }
         }
     }

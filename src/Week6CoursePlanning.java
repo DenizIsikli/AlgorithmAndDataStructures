@@ -46,4 +46,3 @@ public class Week6CoursePlanning {
         System.out.println(result);
     }
 }
-

@@ -39,5 +39,3 @@ public class Week2Stones {
         System.out.println(stoneFunc(A, w));
     }
 }
-
-
